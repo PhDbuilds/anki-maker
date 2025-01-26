@@ -47,13 +47,13 @@ Time is money—especially if you’re studying for certs like CompTIA, juggling
    - Open `anki-maker.sh` in your favorite text editor.
    - Modify the `notes_dir` and `anki_dir` variables to point to your actual note storage path and the directory where you want the CSV file.
 4. **Check the Pattern**:
-   - The custom pattern file is `system.md`. Make sure you’re cool with the instructions in there. You can tweak how the questions and answers get formatted to suit your style. You will need to create a to_anki directory within Fabric's patterns.
+   - The custom pattern file is `system.md`. Make sure you’re cool with the instructions in there. You can tweak how the questions and answers get formatted to suit your style. You will need to create a to_anki directory and copy this `system.md` patther over within Fabric's patterns directory.
 
 ---
 
 ## Usage
 1. **Prefix Your Notes**  
-   - Suppose you have a bunch of notes named `LM1-topic1.md`, `LM1-topic2.md`, etc., in `/path/to/notes`.
+   - Suppose you have a bunch of notes named `LM1-topic1.md`, `LM1-topic2.md`, etc., in `/path/to/notes`. I keep my notes organized this way for easy finding and navigation. For example, If I'm studying for the Linux+ certification, I'll have a Map of Content page named `Linux+` with links to each module. Module 1, for example, would have all lessons that are covered in module 1, all with the prefix LM1-*.md.
 2. **Run the Script**:  
    ```bash
    ./anki-maker.sh LM1
@@ -66,17 +66,26 @@ Time is money—especially if you’re studying for certs like CompTIA, juggling
    - Open Anki, create a new deck (if you want).  
    - Click **File** > **Import**, select `LM1_final.txt` (or the equivalent), and set the field separator to `|`.  
    - Verify that it shows two columns. Then hit **Import**. Boom, you’re done!
+   - Now you have a card deck for each module in Anki, which I find easier to study than having one giant deck with thousands of cards. I will also typically put all of these decks within the same Master Deck titled `Linux+` for example, so if I did want to study them all at once, I could just select that Master Deck to study from versus the individual decks.
 
 ---
 
 ## Example
 If you have notes like:
 
-```bash
+```
 /path/to/notes
- ├── LM1-lesson1.md
- ├── LM1-lesson2.md
- ├── LM1-review.md
+├── Linux+ MoC
+├── Linux module 1
+│   ├── LM1-lesson1.md
+│   ├── LM1-lesson2.md
+│   ├── LM1-review.md
+├── Linux module 2
+│   ├── LM2-lesson1.md
+│   ├── LM2-lesson2.md
+│   ├── LM2-review.md
+...
+
 ```
 
 Running:
@@ -95,7 +104,7 @@ Which command renames a user account|usermod -l newname oldname
 
 ---
 
-## Advanced Stuff
+## Other Stuff
 - **Custom Patterns**: You can create multiple pattern files for different output formats (say, if you want multiple choice vs. Q&A). Just update the script to point to the new pattern.
 - **Token Limits**: Watch out if your notes are super large; sometimes the AI can choke if you exceed certain token limits. That’s partly why the prefix-based approach is so handy. This and I like to take modular notes that are linked together like this anyways, so adding the prefix to the alreayd created notes was an easy transition for me, and most others using Obsidian anyways.
 
